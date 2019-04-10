@@ -83,12 +83,12 @@ function FormContainer({ onComplete }) {
             <h4>{name}</h4>
             <div className="button-container">
               {status === 'complete' && (
-                <button className="incomplete" onClick={() => updateSectionStatus(index, 'incomplete')}>
+                <button className="incomplete" onClick={() => updateSectionStatus(index, 'available')}>
                   Incomplete
                 </button>
               )}
               {status !== 'unavailable' && status !== 'complete' && (
-                <button className="complete" onClick={() => completeSection(index)}>
+                <button className="complete" onClick={() => updateSectionStatus(index, 'complete')}>
                   Complete
                 </button>
               )}
