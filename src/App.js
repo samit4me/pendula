@@ -1,28 +1,26 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCircle, faDotCircle, faCheckCircle, faExclamationCircle } from '@fortawesome/free-solid-svg-icons'
+import FormContainer from './FormContainer';
 import logo from './logo.svg';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+library.add(faCircle, faDotCircle, faCheckCircle, faExclamationCircle)
+
+function App() {
+  const [formComplete, setFormComplete] = useState(false);
+
+  return (
+    <div className={`App ${formComplete ? 'excite' : ''}`}>
+      <header className="App-header">
+        <h2>Pendula - The Navigator</h2>
+      </header>
+      <main className="App-body">
+        <FormContainer onComplete={() => setFormComplete(true)} />
+      </main>
+      <img src={logo} className="App-logo" alt="logo" onClick={() => setFormComplete(false)} />
+    </div>
+  );
 }
 
 export default App;
